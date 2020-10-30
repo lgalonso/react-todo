@@ -1,10 +1,11 @@
 import { Component } from 'react';
 import './App.css';
 import Todos from './components/Todos';
+import Header from './components/layout/Header'
 
 class App extends Component {
   state = {
-    app_version: "v0.1",
+    app_version: "v0.2",
     todos: [
       {
         id: 1,
@@ -24,6 +25,11 @@ class App extends Component {
     ]
   }
 
+  /** By using arrow functions to define our methods we avoid having to bind them everytime we pass them down to a component
+   * 
+   * @param {*} id 
+   *
+   */
   toggleComplete = (id) => {
         this.setState({ todos: this.state.todos.map(todo => {
           if(todo.id === id) todo.completed = !todo.completed
@@ -32,6 +38,10 @@ class App extends Component {
       })
   }
 
+  /**
+   * 
+   * @param {*} id 
+   */
   deleteTodo = (id) => {
     this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] })
 }
@@ -39,7 +49,8 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <h1>Todo App {this.state.app_version}</h1>
+        <Header app_version={this.state.app_version}></Header>
+        {/* <h1>Todo App {this.state.app_version}</h1> */}
         <Todos todos={this.state.todos} toggleComplete={this.toggleComplete} deleteTodo={this.deleteTodo}/>
       </div>
     );
