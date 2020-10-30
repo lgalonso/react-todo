@@ -32,7 +32,6 @@ class App extends Component {
   }
 
   render(){
-    console.log(this.state.todos)
     return (
       <div className="App">
         <h1>Todo App {this.state.app_version}</h1>
