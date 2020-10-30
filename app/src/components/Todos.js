@@ -2,16 +2,18 @@ import React, {Component} from 'react';
 import TodoItem from './TodoItem';
 import PropTypes from 'prop-types';
 
-class Todos extends Component{
-
-    render(){
-        return (
-            this.props.todos.map((todo) => (
-                // <h3>{ todo.tittle }</h3>
-                <TodoItem key={todo.id} todoItem={todo} toggleComplete={this.props.toggleComplete} deleteTodo={this.props.deleteTodo}/>
-                ))
-        );
-    }
+class Todos extends Component {
+  render() {
+    return this.props.todos.map((todo) => (
+      // <h3>{ todo.title }</h3>
+      <TodoItem
+        key={todo.id}
+        todoItem={todo}
+        toggleComplete={this.props.toggleComplete}
+        deleteTodo={this.props.deleteTodo}
+      />
+    ));
+  }
 }
 
 // PropTypes

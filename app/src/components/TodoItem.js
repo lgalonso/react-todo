@@ -12,12 +12,12 @@ export class TodoItem extends Component {
     }
     
     render() {
-        const { id, tittle } = this.props.todoItem;
+        const { id, title } = this.props.todoItem;
         return (
             <div style={ this.getStyle() }>
                 <p> 
                     <input type="checkbox" onChange={this.props.toggleComplete.bind(this, id)} />{' '} 
-                    {tittle} 
+                    {title} 
                     <button onClick={this.props.deleteTodo.bind(this, id)} style={btnStyle}>x</button>
                 </p>
             </div>

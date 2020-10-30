@@ -9,23 +9,24 @@ class App extends Component {
     todos: [
       {
         id: 1,
-        tittle: "todo 1",
+        title: "todo 1",
         completed: false,
       },
       {
         id: 2,
-        tittle: "todo 2",
+        title: "todo 2",
         completed: false,
       },
       {
         id: 3,
-        tittle: "todo 3",
+        title: "todo 3",
         completed: false,
       },
     ],
   };
 
-  /** By using arrow functions to define our methods we avoid having to bind them everytime we pass them down to a component
+  /** By using arrow functions to define our methods we avoid having to bind them everytime
+   * we pass them down to a component
    *
    * @param {*} id
    *
@@ -49,12 +50,21 @@ class App extends Component {
     });
   };
 
+  addTodo = (title) => {
+    const newTodo = {
+      id: 4,
+      title,
+      completed: false
+    }
+    this.setState({ todos: [...this.state.todos, newTodo] })
+  };
+
   render() {
     return (
       <div className="App">
         <div className="container">
           <Header app_version={this.state.app_version}></Header>
-          <AddTodo></AddTodo>
+          <AddTodo addTodo={this.addTodo}></AddTodo>
           <Todos
             todos={this.state.todos}
             toggleComplete={this.toggleComplete}
