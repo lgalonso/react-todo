@@ -20,3 +20,5 @@
   # VScode extensions
     ES7 React/Redux/GraphQL/React-Native snippets
     Gitlens
+  # React Chrome extension
+    https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=es
