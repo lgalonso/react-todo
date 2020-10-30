@@ -9,7 +9,7 @@ class App extends Component {
       {
         id: 1,
         tittle: 'todo 1',
-        completed: false
+        completed: true
       },
       {
         id: 2,
@@ -23,12 +23,20 @@ class App extends Component {
       }
     ]
   }
+
+  markComplete = (id) => {
+        this.setState({ todos: this.state.todos.map(todo => {
+          if(todo.id === id) todo.completed = !todo.completed
+          return todo;
+        }) })
+  }
+
   render(){
     console.log(this.state.todos)
     return (
       <div className="App">
         <h1>Todo App {this.state.app_version}</h1>
-        <Todos todos={this.state.todos}/>
+        <Todos todos={this.state.todos} markComplete={this.markComplete}/>
       </div>
     );
   }
