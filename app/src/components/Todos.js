@@ -8,7 +8,7 @@ class Todos extends Component{
         return (
             this.props.todos.map((todo) => (
                 // <h3>{ todo.tittle }</h3>
-                <TodoItem key={todo.id} todoItem={todo} toggleComplete={this.props.toggleComplete}/>
+                <TodoItem key={todo.id} todoItem={todo} toggleComplete={this.props.toggleComplete} deleteTodo={this.props.deleteTodo}/>
                 ))
         );
     }
