@@ -13,3 +13,7 @@
   # npm run eject
     Removes this tool and copies build dependencies, configuration files
     and scripts into the app directory. If you do this, you can’t go back!
+    
+  # VScode extensions
+    ES7 React/Redux/GraphQL/React-Native snippets
+    Gitlens
