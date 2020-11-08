@@ -6,21 +6,24 @@ import AddTodo from './components/AddTodo';
 import {v4 as uuid} from 'uuid';
 class App extends Component {
   state = {
-    app_version: "v0.2",
+    app_version: "v0.3",
     todos: [
       {
         id: uuid(),
         title: "todo 1",
+        tag: 'test',
         completed: false,
       },
       {
         id: uuid(),
         title: "todo 2",
+        tag: '',
         completed: false,
       },
       {
         id: uuid(),
         title: "todo 3",
+        tag: '',
         completed: false,
       },
     ],
@@ -51,10 +54,20 @@ class App extends Component {
     });
   };
 
-  addTodo = (title) => {
+  clearTag = (id) => {
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) todo.tag = '';
+        return todo;
+      }),
+    });
+  };
+
+  addTodo = (title, tag) => {
     const newTodo = {
       id: uuid(),
       title,
+      tag,
       completed: false
     }
     this.setState({ todos: [...this.state.todos, newTodo] })
@@ -70,6 +83,7 @@ class App extends Component {
             todos={this.state.todos}
             toggleComplete={this.toggleComplete}
             deleteTodo={this.deleteTodo}
+            clearTag={this.clearTag}
           />
         </div>
       </div>

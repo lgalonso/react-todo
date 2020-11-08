@@ -12,13 +12,15 @@ export class TodoItem extends Component {
     }
     
     render() {
-        const { id, title } = this.props.todoItem;
+        const { id, title, tag } = this.props.todoItem;
         return (
             <div style={ this.getStyle() }>
                 <p> 
                     <input type="checkbox" onChange={this.props.toggleComplete.bind(this, id)} />{' '} 
-                    {title} 
+                    {title}
+                    <span style={tag != '' ? spanStyle : {display: 'none'}}>{tag}</span>
                     <button onClick={this.props.deleteTodo.bind(this, id)} style={btnStyle}>x</button>
+                    <button onClick={this.props.clearTag.bind(this, id)} style={tag != '' ? clearStyle : {display: 'none'}}>clear tag</button>
                 </p>
             </div>
         )
@@ -39,6 +41,17 @@ const btnStyle = {
     cursor: 'pointer',
     float: 'right'
 
+}
+
+const spanStyle = {
+    background: 'coral',
+    color: 'white',
+    padding: '2px',
+}
+
+const clearStyle = {
+    float: 'right',
+    
 }
 
 export default TodoItem

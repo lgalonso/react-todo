@@ -11,6 +11,7 @@ class Todos extends Component {
         todoItem={todo}
         toggleComplete={this.props.toggleComplete}
         deleteTodo={this.props.deleteTodo}
+        clearTag={this.props.clearTag}
       />
     ));
   }

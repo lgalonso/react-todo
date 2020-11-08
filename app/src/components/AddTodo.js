@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 export class AddTodo extends Component {
   state = {
     title: "",
+    tag: "",
   };
 
   /**
@@ -15,8 +16,8 @@ export class AddTodo extends Component {
 
   onSubmit = (e) => {
       e.preventDefault();
-      this.props.addTodo(this.state.title);
-      this.setState({ title: '' });
+      this.props.addTodo(this.state.title, this.state.tag);
+      this.setState({ title: '' , tag: ''});
   }
 
   render() {
@@ -25,9 +26,18 @@ export class AddTodo extends Component {
         <input
           type="text"
           name="title"
-          placeholder="Add New Todo..."
+          placeholder="Add Todo Title..."
           style={{ flex: "10", padding: "5px" }}
           value={this.state.title}
+          onChange={this.onChange}
+          required
+        />
+        <input
+          type="text"
+          name="tag"
+          placeholder="Add Todo Tag..."
+          style={{ flex: "10", padding: "5px" }}
+          value={this.state.tag}
           onChange={this.onChange}
         />
         <input
