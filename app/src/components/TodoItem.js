@@ -20,7 +20,7 @@ export class TodoItem extends Component {
                     {title}
                     <span style={tag != '' ? spanStyle : {display: 'none'}}>{tag}</span>
                     <button className='btn btn-danger btn-xs' onClick={this.props.deleteTodo.bind(this, id)} style={btnStyle}>x</button>
-                    <button className='btn btn-flat' onClick={this.props.clearTag.bind(this, id)} style={tag != '' ? {float: 'right'} : {display: 'none'}}>clear tag</button>
+                    <button className='btn btn-flat' onClick={this.props.clearTag.bind(this, id)} style={tag != '' ? clearStyle : {display: 'none'}}>clear tag</button>
                 </p>
             </div>
         )
@@ -51,9 +51,9 @@ const spanStyle = {
 
 const clearStyle = {
     float: 'right',
-    backgroundColor: 'white',
-    color: 'black',
-    border: '2px solid grey',
+    backgroundColor: 'orange',
+    color: 'white',
+    // border: '2px solid grey',
     
 }
 
