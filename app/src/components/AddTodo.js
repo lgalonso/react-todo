@@ -48,9 +48,11 @@ export class AddTodo extends Component {
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
-          <button class="btn btn-outline-secondary" type="submit">
-            Add
-          </button>
+          <div className="input-group-append btn-group">
+            <button class="btn btn-outline-secondary" type="submit">
+              Add
+            </button>
+          </div>
         </div>
       </form>
     );
