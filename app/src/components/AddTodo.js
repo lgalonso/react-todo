@@ -4,6 +4,8 @@ export class AddTodo extends Component {
   state = {
     title: "",
     tag: "",
+    tagSelected: "",
+    existing_tags: this.props.existing_tags,
   };
 
   /**
@@ -16,8 +18,26 @@ export class AddTodo extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.addTodo(this.state.title, this.state.tag);
-    this.setState({ title: "", tag: "" });
+    this.props.addTodo(
+      this.state.title,
+      this.state.tagSelected !== "" ? this.state.tagSelected : this.state.tag
+    );
+
+    if (this.state.tag !== "" && !this.tagInList(this.state.tag)) {
+      this.setState({
+        title: "",
+        tag: "",
+        existing_tags: [...this.state.existing_tags, this.state.tag],
+      });
+    } else {
+      this.setState({ title: "", tag: "" });
+    }
+  };
+
+  tagInList = (new_tag) => {
+    return (
+      this.state.existing_tags.filter((tag) => tag === new_tag)[0] === new_tag
+    );
   };
 
   render() {
@@ -42,11 +62,21 @@ export class AddTodo extends Component {
             value={this.state.tag}
             onChange={this.onChange}
           />
-          <select className="custom-select">
-            <option selected>Existing Labels</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <select
+            className="form-control"
+            name="tagSelected"
+            onChange={this.onChange}
+          >
+            <option value="" selected disabled>
+              Existing Tags
+            </option>
+            {this.state.existing_tags.map((tag) => {
+              return (
+                <option value={tag} key={tag}>
+                  {tag}
+                </option>
+              );
+            })}
           </select>
           <div className="input-group-append btn-group">
             <button class="btn btn-outline-secondary" type="submit">

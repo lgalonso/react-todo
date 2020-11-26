@@ -6,27 +6,28 @@ import AddTodo from "./components/AddTodo";
 import { v4 as uuid } from "uuid";
 class App extends Component {
   state = {
-    app_version: "v0.4",
+    app_version: "v1.0",
     todos: [
       {
         id: uuid(),
-        title: "todo 1",
-        tag: "test",
+        title: "Framework Presentation",
+        tag: "University",
         completed: false,
       },
       {
         id: uuid(),
-        title: "todo 2",
-        tag: "",
+        title: "Conceed less than 10 goals in first 10 games",
+        tag: "Sport",
         completed: false,
       },
       {
         id: uuid(),
-        title: "todo 3",
-        tag: "",
+        title: "Dew it",
+        tag: "Random",
         completed: false,
       },
     ],
+    existing_tags: ["University", "Sport", "Random"]
   };
 
   /** By using arrow functions to define our methods we avoid having to bind them everytime
@@ -71,14 +72,25 @@ class App extends Component {
       completed: false,
     };
     this.setState({ todos: [...this.state.todos, newTodo] });
+    this.updateTags(tag)
   };
+
+  updateTags = (tag) => {
+    if(this.tagNotInList(tag)){
+      this.setState({ existing_tags: [...this.state.existing_tags, tag] })
+    }
+  }
+
+  tagNotInList = (new_tag) => {
+    return this.state.existing_tags.filter(tag => tag === new_tag) !== []
+  }
 
   render() {
     return (
       <div className="App">
         <Header app_version={this.state.app_version}></Header>
         <div className="jumbotron">
-          <AddTodo addTodo={this.addTodo}></AddTodo>
+          <AddTodo addTodo={this.addTodo} existing_tags={this.state.existing_tags}></AddTodo>
           <Todos
             todos={this.state.todos}
             toggleComplete={this.toggleComplete}

@@ -7,7 +7,7 @@ export default function Header(props) {
     // </header>
     <div className="navbar navbar-dark bg-dark">
       
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <img
             src="/logo512.png"
             width="30"

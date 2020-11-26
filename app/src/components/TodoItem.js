@@ -56,12 +56,6 @@ const btnStyle = {
   float: "right",
 };
 
-const spanStyle = {
-  background: "coral",
-  color: "white",
-  padding: "2px",
-};
-
 const clearStyle = {
 //   height: "4vh",
   background: "white",
