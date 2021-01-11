@@ -1,7 +1,10 @@
 # react-todo
  Proyecto To Do list para la asignatura de Programación web cliente
-
-  ## npm start
+ 
+  # npx create-react-app my-app
+    Creates project structure for 'my-app'
+    
+  # npm start
     Starts the development server.
 
   ## npm run build
